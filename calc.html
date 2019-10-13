@@ -16,6 +16,10 @@
         #result {
             min-height: 30px;
             border: 1px solid #eeeeee;
+            justify-content: flex-end;
+            display: flex;
+            align-items: center;
+            background-color: white;
         }
         
         #calc-wrapper {
@@ -42,27 +46,39 @@
             <div>CE</div>
             <div>C</div>
             <div>&#8592;</div>
-            <div>/</div>
-            <div>7</div>
-            <div>8</div>
-            <div>9</div>
-            <div>*</div>
-            <div>4</div>
-            <div>5</div>
-            <div>6</div>
-            <div>-</div>
-            <div>1</div>
-            <div>2</div>
-            <div>3</div>
-            <div>+</div>
+            <div class="copy">/</div>
+            <div class="copy">7</div>
+            <div class="copy">8</div>
+            <div class="copy">9</div>
+            <div class="copy">*</div>
+            <div class="copy">4</div>
+            <div class="copy">5</div>
+            <div class="copy">6</div>
+            <div class="copy">-</div>
+            <div class="copy">1</div>
+            <div class="copy">2</div>
+            <div class="copy">3</div>
+            <div class="copy">+</div>
             <div>+/-</div>
-            <div>0</div>
-            <div>.</div>
-            <div>=</div>
+            <div class="copy">0</div>
+            <div class="copy">.</div>
+            <div id="evaluate">=</div>
         </div>
         <!--/#calc-->
     </div>
     <!--/#calc-wrapper-->
+
+    <script>
+        document.querySelectorAll('.copy').forEach(function(element) {
+            element.onclick = function() {
+                document.querySelector('#result').textContent += this.textContent;
+            }
+        });
+
+        document.querySelector('#evaluate').onclick = function() {
+            document.querySelector('#result').textContent = eval(document.querySelector('#result').textContent);
+        }
+    </script>
 </body>
 
 </html>
